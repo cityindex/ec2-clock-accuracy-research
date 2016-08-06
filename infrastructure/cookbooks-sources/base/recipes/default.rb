@@ -70,3 +70,9 @@ sudo "group_admin_NOPASSWD" do
   not_if { node['platform'].include? "windows" }
 end
 
+######## install NTP
+if platform? 'windows'
+	include_recipe "ntp::windows" 
+else
+	include_recipe "ntp::default"
+end 
